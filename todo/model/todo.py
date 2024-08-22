@@ -1,4 +1,5 @@
 class Todo:
+
     def __init__(self, code_id: int, title: str, description: str) -> None:
         self.code_id: int = code_id
         self.title: str = title
@@ -15,3 +16,15 @@ class Todo:
 
     def __str__(self) -> str:
         return f"{self.code_id} - {self.title}"
+
+class TodoBook:
+
+    def __init__(self) -> None:
+        self.todos: dict[int, Todo] = {}
+
+    def add_todo(self, title: str, description: str) -> int:
+        id = len(self.todos) + 1
+        new_todo = Todo(id, title, description)
+        self.todos[id] = new_todo
+        
+        return id
